@@ -1,4 +1,4 @@
-import { Slash } from "lucide-react";
+import { BicepsFlexed, Slash } from "lucide-react";
 import { Avatar, AvatarFallback } from "src/components/ui/avatar";
 import {
   Breadcrumb,
@@ -19,26 +19,27 @@ import {
 
 export default async function NavBar() {
   return (
-    <div className="navbar-container flex h-[65px] w-full items-center justify-between gap-12">
-      <Breadcrumb className="pl-2">
+    <div className="flex h-[65px] w-full items-center justify-between gap-12 border-b-2">
+      <Breadcrumb className="ml-5">
         <BreadcrumbList>
+          <BicepsFlexed className="stroke-black" />
           <BreadcrumbItem className="gap-3">
             <BreadcrumbPage className="font-extrabold">Home</BreadcrumbPage>
           </BreadcrumbItem>
-          <Slash className="scale-75 " />
+          <Slash className="scale-75 stroke-black" />
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Listings</BreadcrumbLink>
           </BreadcrumbItem>
-          <Slash className="scale-75 " />
+          <Slash className="scale-75 stroke-black" />
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Settings</BreadcrumbLink>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
       <DropdownMenu>
-        <DropdownMenuTrigger className="pr-2 focus:outline-none">
-          <Avatar className="scale-100 bg-slate-100">
-            <AvatarFallback>BK</AvatarFallback>
+        <DropdownMenuTrigger className="mr-5 scale-125 focus:outline-none">
+          <Avatar className=" bg-slate-100">
+            <AvatarFallback className="font-semibold">BK</AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
