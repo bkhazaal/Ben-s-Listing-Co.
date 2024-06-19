@@ -1,5 +1,14 @@
+import { Slash } from "lucide-react";
 import Link from "next/link";
 import { Avatar, AvatarFallback } from "src/components/ui/avatar";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "src/components/ui/breadcrumb";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,7 +27,22 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col text-black">
-      <div className="navbar-container flex h-[65px] w-full items-center justify-end gap-12">
+      <div className="navbar-container flex h-[65px] w-full items-center justify-between gap-12">
+        <Breadcrumb className="pl-2">
+          <BreadcrumbList>
+            <BreadcrumbItem className="gap-3">
+              <BreadcrumbPage className="font-extrabold">Home</BreadcrumbPage>
+            </BreadcrumbItem>
+            <Slash className="scale-75 " />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Listings</BreadcrumbLink>
+            </BreadcrumbItem>
+            <Slash className="scale-75 " />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Settings</BreadcrumbLink>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
         <DropdownMenu>
           <DropdownMenuTrigger className="pr-2 focus:outline-none">
             <Avatar className="scale-100 bg-slate-100">
