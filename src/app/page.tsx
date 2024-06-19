@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Link from "next/link";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
@@ -8,10 +9,10 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center bg-white text-black">
-      <div className="container flex flex-col items-center gap-12 px-4 py-16 ">
-        <h1 className="text-5xl font-extrabold tracking-tight transition-all hover:scale-105 sm:text-[5rem]">
-          Welcome!
-        </h1>
+      <div className="navbar-container flex h-[50px] w-full flex-col items-center gap-12">
+        <Avatar>
+          <AvatarFallback>BK</AvatarFallback>
+        </Avatar>
       </div>
     </main>
   );
