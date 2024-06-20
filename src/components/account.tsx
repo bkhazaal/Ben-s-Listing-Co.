@@ -54,8 +54,8 @@ export default function Account() {
             </Label>
             <Input
               id="name"
-              defaultValue="Pedro Duarte"
-              className="col-span-3"
+              defaultValue="Johnny Appleseed"
+              className="col-span-3 focus:outline-slate-500"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
@@ -64,8 +64,8 @@ export default function Account() {
             </Label>
             <Input
               id="username"
-              defaultValue="@peduarte"
-              className="col-span-3"
+              defaultValue="@jappleseed"
+              className="col-span-3 focus:outline-slate-500"
             />
           </div>
         </div>

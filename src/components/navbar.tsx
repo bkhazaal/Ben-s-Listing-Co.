@@ -15,15 +15,15 @@ export default function NavBar() {
       {" "}
       <div className="ml-5 flex gap-3">
         <BicepsFlexed className="stroke-black" />
-        <Link href="/" className="font-semibold">
+        <Link href="/" className="">
           Home
         </Link>
         <Slash className="scale-75 stroke-black" />
-        <Link className="font-semibold" href="/listings">
+        <Link className="" href="/listings">
           Listings
         </Link>
         <Slash className="scale-75 stroke-black" />
-        <Link className="font-semibold" href="/settings">
+        <Link className="" href="/settings">
           Settings
         </Link>
       </div>
