@@ -3,14 +3,7 @@
 import { BicepsFlexed, Slash } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Avatar, AvatarFallback } from "src/components/ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "src/components/ui/dropdown-menu";
+import Account from "./account";
 
 export default function NavBar() {
   const pathname = usePathname();
@@ -22,32 +15,19 @@ export default function NavBar() {
       {" "}
       <div className="ml-5 flex gap-3">
         <BicepsFlexed className="stroke-black" />
-        <Link href="/" className="">
+        <Link href="/" className="font-semibold">
           Home
         </Link>
         <Slash className="scale-75 stroke-black" />
-        <Link className="" href="/listings">
+        <Link className="font-semibold" href="/listings">
           Listings
         </Link>
         <Slash className="scale-75 stroke-black" />
-        <Link className="" href="/">
+        <Link className="font-semibold" href="/settings">
           Settings
         </Link>
       </div>
-      <DropdownMenu>
-        <DropdownMenuTrigger className="mr-5 scale-125 focus:outline-none">
-          <Avatar className=" bg-slate-100">
-            <AvatarFallback className="font-semibold">BK</AvatarFallback>
-          </Avatar>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem className="font-semibold">
-            My Account
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Logout</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <Account></Account>
     </div>
   );
 }

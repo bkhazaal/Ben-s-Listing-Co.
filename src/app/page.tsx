@@ -5,7 +5,7 @@ export default async function Home() {
   const hello = await api.post.hello({ text: "from tRPC" });
   const session = await getServerAuthSession();
 
-  return <main className="flex min-h-screen flex-col text-black"></main>;
+  return <main></main>;
 }
 
 async function serverThing() {
