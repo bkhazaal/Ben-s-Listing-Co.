@@ -22,24 +22,15 @@ export default function NavBar() {
       {" "}
       <div className="ml-5 flex gap-3">
         <BicepsFlexed className="stroke-black" />
-        <Link
-          href="/"
-          className={`active:font-semibold${pathname === "/" ? "active" : ""}`}
-        >
+        <Link href="/" className="">
           Home
         </Link>
         <Slash className="scale-75 stroke-black" />
-        <Link
-          className={`active:font-semibold${pathname === "/listings" ? "active" : ""}`}
-          href="/listings"
-        >
+        <Link className="" href="/listings">
           Listings
         </Link>
         <Slash className="scale-75 stroke-black" />
-        <Link
-          className={`active:font-semibold${pathname === "/" ? "active" : ""}`}
-          href="/"
-        >
+        <Link className="" href="/">
           Settings
         </Link>
       </div>
