@@ -5,6 +5,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "src/components/ui/dropdown-menu";
+import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 
 export default function Page() {
@@ -14,11 +15,14 @@ export default function Page() {
         <h1 className="text-3xl font-semibold">All Listings</h1>
         <div className="w-120 flex h-10 items-center">
           <DropdownMenu>
-            <DropdownMenuTrigger className="bg-sla0te-200 focus:outline-none">
+            <DropdownMenuTrigger
+              asChild
+              className="bg-sla0te-200 focus:outline-none"
+            >
               <div className="px-6 py-2">
-                <button className="h-10 w-16 rounded-lg bg-slate-100">
+                <Button variant="ghost" className="">
                   Items
-                </button>
+                </Button>
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent>

@@ -54,7 +54,7 @@ export default function Account() {
             <Input
               id="name"
               defaultValue="Johnny Appleseed"
-              className="col-span-3 focus:outline-slate-500"
+              className="col-span-3 focus:outline-slate-300"
             />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
@@ -64,7 +64,7 @@ export default function Account() {
             <Input
               id="username"
               defaultValue="@jappleseed"
-              className="col-span-3 focus:outline-slate-500"
+              className="col-span-3 focus:outline-slate-300"
             />
           </div>
         </div>
