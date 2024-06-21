@@ -10,7 +10,7 @@ import { Input } from "~/components/ui/input";
 import { api } from "~/trpc/server";
 
 export default async function Page() {
-  const helloWorld = await api.post.hello({ text: "something" });
+  const pagesText = await api.post.customMessage({ text: "items per page" });
   return (
     <div className="flex">
       <div className="flex w-full justify-between p-5">
@@ -23,7 +23,7 @@ export default async function Page() {
             >
               <div className="px-6 py-2">
                 <Button variant="secondary" className="">
-                  {helloWorld.greeting}
+                  {pagesText.greeting}
                 </Button>
               </div>
             </DropdownMenuTrigger>
