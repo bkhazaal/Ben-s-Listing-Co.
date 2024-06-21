@@ -7,8 +7,10 @@ import {
 } from "src/components/ui/dropdown-menu";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
+import { api } from "~/trpc/server";
 
-export default function Page() {
+export default async function Page() {
+  const helloWorld = await api.post.hello({ text: "something" });
   return (
     <div className="flex">
       <div className="flex w-full justify-between p-5">
@@ -20,8 +22,8 @@ export default function Page() {
               className="bg-sla0te-200 focus:outline-none"
             >
               <div className="px-6 py-2">
-                <Button variant="ghost" className="">
-                  Items
+                <Button variant="secondary" className="">
+                  {helloWorld.greeting}
                 </Button>
               </div>
             </DropdownMenuTrigger>

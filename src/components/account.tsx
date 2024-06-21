@@ -1,4 +1,3 @@
-import { Avatar, AvatarFallback } from "src/components/ui/avatar";
 import { Button } from "src/components/ui/button";
 import {
   Dialog,
@@ -7,38 +6,15 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "src/components/ui/dialog";
 import { Input } from "src/components/ui/input";
 import { Label } from "src/components/ui/label";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "src/components/ui/dropdown-menu";
+import DropDown from "./dropdown";
 
 export default function Account() {
   return (
     <Dialog>
-      <DropdownMenu>
-        <DropdownMenuTrigger className="mr-5 scale-125 focus:outline-none">
-          <Avatar className=" bg-slate-100">
-            <AvatarFallback className="font-semibold">BK</AvatarFallback>
-          </Avatar>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DialogTrigger asChild>
-            <DropdownMenuItem className="font-semibold">
-              My Account
-            </DropdownMenuItem>
-          </DialogTrigger>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Logout</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <DropDown />
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
