@@ -42,6 +42,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    listings      Listing[]
 }
 
 model VerificationToken {
@@ -53,6 +54,11 @@ model VerificationToken {
 }
 
 model Listing {
-    id   Int    @id @default(autoincrement())
-    name String
+    id           Int     @id @default(autoincrement())
+    location     String
+    askingPrice  Int
+    grossRevenue Int
+    adjCashflow  Int
+    User         User?   @relation(fields: [userId], references: [id])
+    userId       String?
 }
