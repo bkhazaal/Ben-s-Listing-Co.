@@ -38,13 +38,22 @@ export default async function Page() {
           </div>
         </div>
       </div>
-      <div className="flex">
-        <div className="m-5 flex h-48 w-1/2 rounded-md border border-slate-300"></div>
-        <div className="m-5 flex h-48 w-1/2 rounded-md border border-slate-300"></div>
-      </div>
-      <div className="flex">
-        <div className="m-5 flex h-48 w-1/2 rounded-md border border-slate-300"></div>
-        <div className="m-5 flex h-48 w-1/2 rounded-md border border-slate-300"></div>
+      <div className="listBoxes">
+        {listings.map((listing) => {
+          return (
+            <div
+              key={listing.id}
+              className="m-5 flex h-48 w-1/2 rounded-md border border-slate-300"
+            >
+              <div className="ml-5 mt-5">
+                <h1 className="text-2xl font-bold">Name</h1>
+                <p className="text-sm text-slate-500">
+                  {listing.location.toUpperCase()}
+                </p>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </main>
   );
