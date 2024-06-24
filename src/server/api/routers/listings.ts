@@ -6,15 +6,11 @@ import {
   publicProcedure,
 } from "~/server/api/trpc";
 
-export const listingRouter = createTRPCRouter({
-  hello: publicProcedure
-    .input(z.object({ text: z.string() }))
-    .query(({ input }) => {
-      return {
-        greeting: `Hello ${input.text}`,
-      };
-    }),
+import { Prisma, PrismaClient } from "@prisma/client";
 
+const prisma = new PrismaClient();
+
+export const listingRouter = createTRPCRouter({
   customMessage: publicProcedure
     .input(z.object({ text: z.string() }))
     .query(({ input }) => {
@@ -24,19 +20,26 @@ export const listingRouter = createTRPCRouter({
     }),
 
   create: protectedProcedure
-    .input(z.object({ name: z.string().min(1) }))
+    .input(
+      z.object({
+        name: z.string(),
+        location: z.string(),
+        askingPrice: z.number(),
+        grossRevenue: z.number(),
+        adjCashflow: z.number(),
+      }),
+    )
     .mutation(async ({ ctx, input }) => {
-      // simulate a slow db call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      return ctx.db.listing.create({
+      const newListing = ctx.db.listing.create({
         data: {
-          location: "Prescott",
-          askingPrice: 200000,
-          grossRevenue: 2000000,
-          adjCashflow: 300000,
+          name: input.name,
+          location: input.location,
+          askingPrice: input.askingPrice,
+          grossRevenue: input.grossRevenue,
+          adjCashflow: input.adjCashflow,
         },
       });
+      return newListing;
     }),
 
   getLatest: publicProcedure.query(({ ctx }) => {
