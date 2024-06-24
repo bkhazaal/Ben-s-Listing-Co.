@@ -39,12 +39,12 @@ export default async function Page() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2">
+      <div className="grid grid-cols-1  lg:grid-cols-2">
         {listings.map((listing) => {
           return (
             <div
               key={listing.id}
-              className="m-5 flex h-48 rounded-md border border-slate-300"
+              className="m-5 flex h-48 rounded-md border border-slate-300 transition hover:scale-[1.02]"
             >
               <div className="ml-5 mt-5">
                 <h1 className="text-2xl font-bold">

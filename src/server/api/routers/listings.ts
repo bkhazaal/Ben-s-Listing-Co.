@@ -11,6 +11,14 @@ import { Prisma, PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export const listingRouter = createTRPCRouter({
+  hello: publicProcedure
+    .input(z.object({ text: z.string() }))
+    .query(({ input }) => {
+      return {
+        greeting: `Hello ${input.text}`,
+      };
+    }),
+
   customMessage: publicProcedure
     .input(z.object({ text: z.string() }))
     .query(({ input }) => {
@@ -30,7 +38,8 @@ export const listingRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      const newListing = ctx.db.listing.create({
+      // simulate a slow db call
+      const newListing = prisma.listing.create({
         data: {
           name: input.name,
           location: input.location,
