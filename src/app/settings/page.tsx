@@ -66,7 +66,7 @@ export default function Page() {
           </p>
         </div>
       </div>
-      <div className="flex w-full">
+      <div className="w-full">
         {activeTab === "tab1" && <Account />}
         {activeTab === "tab2" && <Buying />}
         {activeTab === "tab3" && <Selling />}

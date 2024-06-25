@@ -18,19 +18,11 @@ export default async function Page() {
         <div className="flex w-full justify-between p-5">
           <h1 className="text-3xl font-semibold">All Listings</h1>
           <div className="w-120 flex h-10 items-center">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild className="focus:outline-none">
-                <div className="px-6 py-2">
-                  <Button variant="secondary" className="">
-                    Items per page
-                  </Button>
-                </div>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem>10 Items Per Page</DropdownMenuItem>
-                <DropdownMenuItem>20 Items Per Page</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <div className="px-6 py-2">
+              <Button variant="secondary" className="">
+                Create New Listing
+              </Button>
+            </div>
             <Search className="mx-2 h-20 w-10"></Search>
             <Input type="text" className="focus:outline-slate-300" />
           </div>
