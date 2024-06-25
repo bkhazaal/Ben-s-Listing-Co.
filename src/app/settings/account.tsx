@@ -1,3 +1,3 @@
 export default function Account() {
-  return <div>text</div>;
+  return <div>test1</div>;
 }
