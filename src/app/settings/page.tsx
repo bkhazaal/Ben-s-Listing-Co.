@@ -1,66 +1,52 @@
 "use client";
-
 import { useState } from "react";
 import Account from "./account";
 import Buying from "./buying";
 import Messages from "./messages";
 import Notifications from "./notifications";
 import Selling from "./selling";
-
 export default function Page() {
   const [activeTab, setActiveTab] = useState("tab1");
-  const handleTab1 = () => {
-    setActiveTab("tab1");
-  };
-  const handleTab2 = () => {
-    setActiveTab("tab2");
-  };
-  const handleTab3 = () => {
-    setActiveTab("tab3");
-  };
-  const handleTab4 = () => {
-    setActiveTab("tab4");
-  };
-  const handleTab5 = () => {
-    setActiveTab("tab5");
+  const handleTab = (tab: string) => {
+    setActiveTab(tab);
   };
   return (
     <div className="flex justify-center">
       <div className="m-5 leading-10">
         <h1 className="mb-5 text-3xl font-bold">Settings</h1>
-        <div className="grid text-[15px] text-slate-400">
+        <div className="grid text-[15px]">
           <p
             className={activeTab === "tab1" ? "active" : ""}
             style={{ cursor: "pointer" }}
-            onClick={handleTab1}
+            onClick={() => handleTab("tab1")}
           >
             Account
           </p>
           <p
             className={activeTab === "tab2" ? "active" : ""}
             style={{ cursor: "pointer" }}
-            onClick={handleTab2}
+            onClick={() => handleTab("tab2")}
           >
             Buying
           </p>
           <p
             className={activeTab === "tab3" ? "active" : ""}
             style={{ cursor: "pointer" }}
-            onClick={handleTab3}
+            onClick={() => handleTab("tab3")}
           >
             Selling
           </p>
           <p
             className={activeTab === "tab4" ? "active" : ""}
             style={{ cursor: "pointer" }}
-            onClick={handleTab4}
+            onClick={() => handleTab("tab4")}
           >
             Messages
           </p>
           <p
             className={activeTab === "tab5" ? "active" : ""}
             style={{ cursor: "pointer" }}
-            onClick={handleTab5}
+            onClick={() => handleTab("tab5")}
           >
             Notifications
           </p>

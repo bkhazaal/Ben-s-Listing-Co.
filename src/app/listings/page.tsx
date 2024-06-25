@@ -1,11 +1,4 @@
 import { Search } from "lucide-react";
-import { useState } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "src/components/ui/dropdown-menu";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { api } from "~/trpc/server";
@@ -33,7 +26,7 @@ export default async function Page() {
           return (
             <div
               key={listing.id}
-              className="m-5 flex h-48 rounded-md border border-slate-300 transition hover:scale-[1.02]"
+              className="m-5 flex h-48 rounded-md border border-slate-300 transition hover:scale-[1.02] hover:cursor-pointer hover:shadow-md"
             >
               <div className="ml-5 mt-5">
                 <h1 className="text-2xl font-bold">{listing.name}</h1>

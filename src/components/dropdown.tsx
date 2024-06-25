@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Avatar, AvatarFallback } from "src/components/ui/avatar";
 import {
   DropdownMenu,
@@ -6,7 +7,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "src/components/ui/dropdown-menu";
-import { DialogTrigger } from "./ui/dialog";
 
 export default function DropDown() {
   return (
@@ -17,13 +17,11 @@ export default function DropDown() {
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DialogTrigger>
-          <DropdownMenuItem className="font-semibold">
-            My Account
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Logout</DropdownMenuItem>
-        </DialogTrigger>
+        <DropdownMenuItem className="font-semibold">
+          <Link href="/settings">My Account</Link>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem>Logout</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

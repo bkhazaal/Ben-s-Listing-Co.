@@ -3,8 +3,7 @@
 import { BicepsFlexed, Slash } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Account from "./account";
-
+import DropDown from "./dropdown";
 export default function NavBar() {
   const pathname = usePathname();
   return (
@@ -27,7 +26,7 @@ export default function NavBar() {
           Settings
         </Link>
       </div>
-      <Account></Account>
+      <DropDown />
     </div>
   );
 }
