@@ -19,10 +19,7 @@ export default async function Page() {
           <h1 className="text-3xl font-semibold">All Listings</h1>
           <div className="w-120 flex h-10 items-center">
             <DropdownMenu>
-              <DropdownMenuTrigger
-                asChild
-                className="bg-sla0te-200 focus:outline-none"
-              >
+              <DropdownMenuTrigger asChild className="focus:outline-none">
                 <div className="px-6 py-2">
                   <Button variant="secondary" className="">
                     Items per page
@@ -47,11 +44,9 @@ export default async function Page() {
               className="m-5 flex h-48 rounded-md border border-slate-300 transition hover:scale-[1.02]"
             >
               <div className="ml-5 mt-5">
-                <h1 className="text-2xl font-bold">
-                  {listing.name.toUpperCase()}
-                </h1>
-                <p className="text-sm text-slate-500">
-                  {listing.location.toUpperCase()}
+                <h1 className="text-2xl font-bold">{listing.name}</h1>
+                <p className="text-sm uppercase text-slate-500">
+                  {listing.location}
                 </p>
                 <div className="m-6 grid w-full grid-cols-3 place-content-center justify-between text-center">
                   <p className="text-sm text-slate-500">Asking Price:</p>
