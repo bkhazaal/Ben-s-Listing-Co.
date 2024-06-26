@@ -1,63 +1,51 @@
-"use client";
-import { useState } from "react";
-import Account from "./account";
-import Buying from "./buying";
-import Messages from "./messages";
-import Notifications from "./notifications";
-import Selling from "./selling";
-export default function Page() {
-  const [activeTab, setActiveTab] = useState("tab1");
-  const handleTab = (tab: string) => {
-    setActiveTab(tab);
-  };
+import "src/styles/globals.css";
+import { Button } from "~/components/ui/button";
+import { Input } from "~/components/ui/input";
+
+export default function Account() {
   return (
-    <div className="flex justify-center">
-      <div className="m-5 leading-10">
-        <h1 className="mb-5 text-3xl font-bold">Settings</h1>
-        <div className="grid text-[15px]">
-          <p
-            className={activeTab === "tab1" ? "active" : ""}
-            style={{ cursor: "pointer" }}
-            onClick={() => handleTab("tab1")}
-          >
-            Account
-          </p>
-          <p
-            className={activeTab === "tab2" ? "active" : ""}
-            style={{ cursor: "pointer" }}
-            onClick={() => handleTab("tab2")}
-          >
-            Buying
-          </p>
-          <p
-            className={activeTab === "tab3" ? "active" : ""}
-            style={{ cursor: "pointer" }}
-            onClick={() => handleTab("tab3")}
-          >
-            Selling
-          </p>
-          <p
-            className={activeTab === "tab4" ? "active" : ""}
-            style={{ cursor: "pointer" }}
-            onClick={() => handleTab("tab4")}
-          >
-            Messages
-          </p>
-          <p
-            className={activeTab === "tab5" ? "active" : ""}
-            style={{ cursor: "pointer" }}
-            onClick={() => handleTab("tab5")}
-          >
-            Notifications
-          </p>
+    <div className="flex">
+      <div className="m-12 w-full rounded-lg border p-6 text-3xl font-bold">
+        Account Settings
+        <div className="mt-5 grid grid-cols-2 gap-x-5 gap-y-4">
+          <div>
+            <label className="text-sm font-normal">First Name</label>
+            <Input className="focus:outline-slate-300"></Input>
+          </div>
+          <div>
+            <label className="text-sm font-normal">Last Name</label>
+            <Input className="focus:outline-slate-300"></Input>
+          </div>
+          <div>
+            <label className="text-sm font-normal">Email</label>
+            <Input className="focus:outline-slate-300"></Input>
+          </div>
+          <div>
+            <label className="text-sm font-normal">Title</label>
+            <Input className="focus:outline-slate-300"></Input>
+          </div>
+          <div>
+            <label className="text-sm font-normal">Company Name</label>
+            <Input className="focus:outline-slate-300"></Input>
+          </div>
+          <div>
+            <label className="text-sm font-normal">Office Phone</label>
+            <Input className="focus:outline-slate-300"></Input>
+          </div>
+          <div>
+            <label className="text-sm font-normal">Home Phone</label>
+            <Input className="focus:outline-slate-300"></Input>
+          </div>
+          <div>
+            <label className="text-sm font-normal">Mobile Phone</label>
+            <Input className="focus:outline-slate-300"></Input>
+          </div>
         </div>
-      </div>
-      <div className="w-full">
-        {activeTab === "tab1" && <Account />}
-        {activeTab === "tab2" && <Buying />}
-        {activeTab === "tab3" && <Selling />}
-        {activeTab === "tab4" && <Messages />}
-        {activeTab === "tab5" && <Notifications />}{" "}
+        <div className="mt-5">
+          <Button className="scale-105 hover:scale-110 hover:bg-black">
+            Save
+          </Button>
+        </div>
       </div>
     </div>
   );
