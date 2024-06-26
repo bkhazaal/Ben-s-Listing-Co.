@@ -37,8 +37,7 @@ export const listingRouter = createTRPCRouter({
         adjCashflow: z.number(),
       }),
     )
-    .mutation(async ({ ctx, input }) => {
-      // simulate a slow db call
+    .mutation(async ({ input }) => {
       const newListing = prisma.listing.create({
         data: {
           name: input.name,
