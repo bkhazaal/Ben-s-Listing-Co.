@@ -18,7 +18,7 @@ export default function DropDown() {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem className="font-semibold">
-          <Link href="/settings">My Account</Link>
+          <Link href="/signup">My Account</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>Logout</DropdownMenuItem>
