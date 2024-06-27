@@ -14,8 +14,11 @@ export default async function Page() {
         <div className="flex w-full justify-between p-10">
           <h1 className="text-3xl font-semibold">All Listings</h1>
           <div className="flex h-10 items-center">
-            <div className="w-[200px] rounded-md border text-center">
-              <Link href="/listings/create-listing" className="text-sm">
+            <div className="w-[200px] rounded-md border p-1 text-center">
+              <Link
+                href="/listings/create-listing"
+                className="w-[200px] text-[13px]"
+              >
                 Create New Listing
               </Link>
             </div>
