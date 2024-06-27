@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { api } from "~/trpc/react";
 
@@ -22,6 +21,7 @@ export default function CreateListing() {
   const { register, handleSubmit } = useForm<Schema>({
     resolver: zodResolver(schema),
   });
+
   const createListing = api.listing.create.useMutation({
     onSuccess: () => {
       console.log("success");
@@ -36,7 +36,6 @@ export default function CreateListing() {
       adjCashflow: data.adjCashflow,
     });
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="px-[200px] py-[50px]">
       <h1 className="text-center text-3xl">New Listing</h1>

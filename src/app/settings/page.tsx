@@ -42,9 +42,7 @@ export default function Account() {
           </div>
         </div>
         <div className="mt-5">
-          <Button className="scale-105 bg-black hover:scale-110 hover:bg-black">
-            Save
-          </Button>
+          <Button className=" bg-black hover:bg-black">Save</Button>
         </div>
       </div>
     </div>
