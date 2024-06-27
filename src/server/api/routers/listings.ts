@@ -1,10 +1,6 @@
 import { z } from "zod";
 
-import {
-  createTRPCRouter,
-  protectedProcedure,
-  publicProcedure,
-} from "~/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 import { PrismaClient } from "@prisma/client";
 
@@ -27,7 +23,7 @@ export const listingRouter = createTRPCRouter({
       };
     }),
 
-  create: protectedProcedure
+  create: publicProcedure
     .input(
       z.object({
         name: z.string(),
