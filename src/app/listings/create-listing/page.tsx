@@ -14,7 +14,6 @@ const schema = z.object({
   grossRevenue: z.number(),
   adjCashflow: z.number(),
 });
-
 type Schema = z.infer<typeof schema>;
 
 export default function CreateListing() {
