@@ -1,6 +1,7 @@
 import { GeistSans } from "geist/font/sans";
 import "src/styles/globals.css";
 import NavBar from "~/components/navbar";
+import { Toaster } from "~/components/ui/toaster";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({
         <TRPCReactProvider>
           <NavBar />
           {children}
+          <Toaster />
         </TRPCReactProvider>
       </body>
     </html>

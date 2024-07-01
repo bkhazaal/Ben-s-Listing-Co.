@@ -5,18 +5,20 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "~/components/ui/button";
 import { Label } from "~/components/ui/label";
+import { useToast } from "~/components/ui/use-toast";
 import { api } from "~/trpc/react";
 
 const schema = z.object({
-  name: z.string(),
-  location: z.string(),
-  askingPrice: z.number(),
-  grossRevenue: z.number(),
-  adjCashflow: z.number(),
+  name: z.string().min(1),
+  location: z.string().min(1),
+  askingPrice: z.number().min(0),
+  grossRevenue: z.number().min(0),
+  adjCashflow: z.number().min(0),
 });
 type Schema = z.infer<typeof schema>;
 
 export default function CreateListing() {
+  const { toast } = useToast();
   const { register, handleSubmit } = useForm<Schema>({
     resolver: zodResolver(schema),
   });
@@ -34,7 +36,19 @@ export default function CreateListing() {
       grossRevenue: data.grossRevenue,
       adjCashflow: data.adjCashflow,
     });
+    toast({
+      title: "New Listing Created ",
+    });
   };
+
+  const {
+    formState: { isValid },
+  } = useForm({
+    mode: "onBlur",
+  });
+
+  console.log(isValid);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="px-[200px] py-[50px]">
       <h1 className="text-center text-3xl">New Listing</h1>
@@ -43,7 +57,7 @@ export default function CreateListing() {
           <Label>Company Name:</Label>
           <div>
             <input
-              {...register("name")}
+              {...register("name", { required: "This field is required" })}
               className="my-2 rounded-lg border border-slate-300 px-3 py-2"
             ></input>
           </div>
@@ -92,7 +106,11 @@ export default function CreateListing() {
         </div>
       </div>
       <div className="flex justify-center">
-        <Button className="bg-black hover:bg-black" type="submit">
+        <Button
+          className="bg-black hover:bg-black"
+          type="submit"
+          disabled={false}
+        >
           Publish
         </Button>
       </div>

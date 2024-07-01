@@ -1,11 +1,7 @@
-"use client";
-
 import { BicepsFlexed, Slash } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import DropDown from "./dropdown";
+import SignInOut from "~/components/signinup";
 export default function NavBar() {
-  const pathname = usePathname();
   return (
     <div
       className="flex h-[65px] w-full items-center justify-between gap-12 border-b-[1px]
@@ -26,7 +22,7 @@ export default function NavBar() {
           Settings
         </Link>
       </div>
-      <DropDown />
+      <SignInOut />
     </div>
   );
 }

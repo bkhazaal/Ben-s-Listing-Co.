@@ -182,11 +182,10 @@ export default function SignUp() {
                 )}
               />
             </div>
-            <div className="mt-5 flex justify-center gap-5">
+            <div className="mt-5 flex items-center justify-center gap-5">
               <Button type="submit" className="bg-black hover:bg-black">
                 Sign Up
               </Button>
-              <Button className="bg-black hover:bg-black">Sign In</Button>
             </div>
           </form>
         </Form>
