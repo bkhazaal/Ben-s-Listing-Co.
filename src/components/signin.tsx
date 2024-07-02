@@ -1,15 +1,16 @@
 import Link from "next/link";
 import { getServerAuthSession } from "~/server/auth";
 
-export default async function SignInOut() {
+export default async function SignIn() {
   const session = await getServerAuthSession();
+  if (session?.user) return null;
   return (
     <main>
       <Link
-        href={session ? "/api/auth/signout" : "/api/auth/signin"}
+        href="/api/auth/signin"
         className="mr-5 rounded-lg bg-black p-2.5 text-sm text-white hover:bg-black"
       >
-        {session ? "Sign out" : "Sign in"}
+        Sign In
       </Link>
     </main>
   );

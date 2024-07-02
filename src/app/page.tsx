@@ -1,20 +1,24 @@
 import { getServerAuthSession } from "~/server/auth";
-import { api } from "~/trpc/server";
 
 export default async function Home() {
   const session = await getServerAuthSession();
-
-  return (
-    <main>
-      <h1 className="flex justify-center p-[50px] text-4xl font-bold">
-        WELCOME
-      </h1>
-    </main>
-  );
-}
-
-async function serverThing() {
-  const session = await getServerAuthSession();
-  if (!session?.user) return null;
-  return <></>;
+  if (session?.user)
+    return (
+      <main>
+        <h1 className="fadeInUp-animation flex justify-center p-[50px] text-center text-4xl font-bold">
+          Welcome
+          <br />
+          {session.user?.name}
+        </h1>
+      </main>
+    );
+  else
+    return (
+      <main>
+        <h1 className="fadeInUp-animation flex justify-center p-[50px] text-center text-4xl font-bold">
+          Welcome <br />
+          (You should sign in)
+        </h1>
+      </main>
+    );
 }

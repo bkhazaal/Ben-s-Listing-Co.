@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { number, z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
@@ -53,6 +53,20 @@ export const listingRouter = createTRPCRouter({
   list: publicProcedure.query(({ ctx }) => {
     return ctx.db.listing.findMany({});
   }),
+
+  delete: publicProcedure
+    .input(
+      z.object({
+        id: z.number(),
+      }),
+    )
+    .mutation(({ ctx, input }) => {
+      return ctx.db.listing.delete({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
 
   getSecretMessage: publicProcedure.query(() => {
     return "you can now see this secret message!";

@@ -47,7 +47,7 @@ export default function SignUp() {
   };
   return (
     <main>
-      <div className="flex">
+      <div className="flex ">
         <Form {...form}>
           <form
             onSubmit={handleSubmit(onSubmit)}
