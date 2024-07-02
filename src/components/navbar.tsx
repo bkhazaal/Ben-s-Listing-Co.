@@ -58,7 +58,7 @@ async function UserAvatar() {
           ></AvatarImage>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="mr-5">
+      <DropdownMenuContent className="mr-5 mt-5">
         <DropdownMenuItem>
           <Link href="/settings/account">Account Settings</Link>
         </DropdownMenuItem>

@@ -1,6 +1,9 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ToastAction } from "@radix-ui/react-toast";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "~/components/ui/button";
@@ -18,6 +21,7 @@ const schema = z.object({
 type Schema = z.infer<typeof schema>;
 
 export default function CreateListing() {
+  const router = useRouter();
   const { toast } = useToast();
   const { register, handleSubmit } = useForm<Schema>({
     resolver: zodResolver(schema),
@@ -26,6 +30,7 @@ export default function CreateListing() {
   const createListing = api.listing.create.useMutation({
     onSuccess: () => {
       console.log("success");
+      router.refresh();
     },
   });
   const onSubmit = (data: Schema) => {
@@ -38,6 +43,11 @@ export default function CreateListing() {
     });
     toast({
       title: "New Listing Created ",
+      action: (
+        <ToastAction altText="See Listings">
+          <Link href="/listings">See Listings</Link>
+        </ToastAction>
+      ),
     });
   };
 
