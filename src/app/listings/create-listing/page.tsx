@@ -43,21 +43,18 @@ export default function CreateListing() {
     });
     toast({
       title: "New Listing Created ",
+      style: {
+        width: "100%",
+      },
       action: (
         <ToastAction altText="See Listings">
-          <Link href="/listings">See Listings</Link>
+          <div className="mr-5 rounded-md border p-2 text-center">
+            <Link href="/listings">See Listings</Link>
+          </div>
         </ToastAction>
       ),
     });
   };
-
-  const {
-    formState: { isValid },
-  } = useForm({
-    mode: "onBlur",
-  });
-
-  console.log(isValid);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="px-[200px] py-[50px]">
@@ -116,11 +113,7 @@ export default function CreateListing() {
         </div>
       </div>
       <div className="flex justify-center">
-        <Button
-          className="bg-black hover:bg-black"
-          type="submit"
-          disabled={false}
-        >
+        <Button className="bg-black hover:bg-black" type="submit">
           Publish
         </Button>
       </div>

@@ -1,59 +1,59 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "~/components/ui/button";
 import { Form, FormField, FormItem, FormLabel } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
+import { useToast } from "~/components/ui/use-toast";
 import { api } from "~/trpc/react";
 
 const schema = z.object({
-  firstName: z.string(),
-  lastName: z.string(),
-  email: z.string(),
-  title: z.string(),
-  companyName: z.string(),
-  officePhone: z.string(),
-  homePhone: z.string(),
-  mobilePhone: z.string(),
+  firstName: z.string().min(1),
+  lastName: z.string().min(1),
+  email: z.string().min(1),
+  title: z.string().min(1),
+  companyName: z.string().min(1),
+  officePhone: z.string().min(1),
+  homePhone: z.string().min(1),
+  mobilePhone: z.string().min(1),
 });
 
 type Schema = z.infer<typeof schema>;
 
-export default function SignUp() {
+export default function SignUp({ id }: { id: string }) {
+  const router = useRouter();
+  const { toast } = useToast();
   const form = useForm();
 
   const { handleSubmit, register } = useForm<Schema>({
     resolver: zodResolver(schema),
   });
 
-  const createUser = api.user.create.useMutation({
+  const updateUser = api.user.update.useMutation({
     onSuccess: () => {
-      console.log("success");
+      router.refresh();
     },
   });
   const onSubmit = (data: Schema) => {
-    createUser.mutate({
-      firstName: data.firstName,
-      lastName: data.lastName,
-      email: data.email,
-      title: data.title,
-      companyName: data.companyName,
-      officePhone: data.officePhone,
-      homePhone: data.homePhone,
-      mobilePhone: data.mobilePhone,
+    updateUser.mutate({
+      ...data,
+    });
+    toast({
+      title: "User Info Updated",
     });
   };
   return (
     <main>
-      <div className="flex ">
+      <div className="flex">
         <Form {...form}>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="m-12 w-full rounded-lg border p-6 text-3xl font-bold"
           >
-            Create An Account
+            Update Account
             <div className="mt-5 grid grid-cols-2 gap-x-5 gap-y-4">
               <FormField
                 control={form.control}
@@ -182,9 +182,9 @@ export default function SignUp() {
                 )}
               />
             </div>
-            <div className="mt-5 flex items-center justify-center gap-5">
+            <div className="mt-11 flex items-center gap-5">
               <Button type="submit" className="bg-black hover:bg-black">
-                Sign Up
+                Update
               </Button>
             </div>
           </form>

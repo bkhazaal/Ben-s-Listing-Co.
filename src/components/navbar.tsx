@@ -6,7 +6,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
@@ -30,10 +29,7 @@ export default async function NavBar() {
           Listings
         </Link>
         <Slash className="scale-75 stroke-black" />
-        <Link
-          className=""
-          href={session ? "/settings/account" : "/settings/signin"}
-        >
+        <Link className="" href={session ? "/settings/account" : "/signin"}>
           Settings
         </Link>
       </div>

@@ -1,25 +1,17 @@
 import Link from "next/link";
-import { getServerAuthSession } from "~/server/auth";
-import { api } from "~/trpc/server";
 
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerAuthSession();
   return (
     <div className="flex justify-center">
       <div className="m-5 leading-10">
         <h1 className="mb-5 text-3xl font-bold">Settings</h1>
         <div className="grid text-[15px]">
-          <Link href={session ? "/settings/account" : "/settings/signin"}>
-            Account
-          </Link>
-          <Link href="/settings/buying">Buying</Link>
-          <Link href="/settings/selling">Selling</Link>
-          <Link href="/settings/messages">Messages</Link>
-          <Link href="/settings/notifications">Notifications</Link>
+          <Link href="/settings/account">Account Info</Link>
+          <Link href="/settings/update">Update Account</Link>
         </div>
       </div>
       <div className="w-full">{children}</div>

@@ -4,10 +4,12 @@ import Link from "next/link";
 import "src/styles/globals.css";
 import DeleteButton from "~/components/deletebutton";
 import { Input } from "~/components/ui/input";
+import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
 
 export default async function Page() {
   const listings = await api.listing.list();
+  const session = await getServerAuthSession();
 
   return (
     <main>
@@ -16,7 +18,14 @@ export default async function Page() {
           <h1 className="text-3xl font-semibold">All Listings</h1>
           <div className="flex h-10 items-center">
             <div className="w-[250px] rounded-md border p-2 text-center">
-              <Link href="/listings/create-listing" className="text-[13px]">
+              <Link
+                href={
+                  session
+                    ? "/listings/create-listing"
+                    : "/listings/signinplease"
+                }
+                className="text-[13px]"
+              >
                 Create New Listing
               </Link>
             </div>
