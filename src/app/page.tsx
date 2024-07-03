@@ -16,8 +16,9 @@ export default async function Home() {
     return (
       <main>
         <h1 className="fadeInUp-animation flex justify-center p-[50px] text-center text-4xl font-bold">
-          Welcome <br />
-          (You should sign in)
+          Welcome! <br />
+          Sign in to Get <br />
+          Started!
         </h1>
       </main>
     );

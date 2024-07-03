@@ -11,8 +11,7 @@ import {
 } from "~/components/ui/dropdown-menu";
 import { getServerAuthSession } from "~/server/auth";
 
-export default async function NavBar() {
-  const session = await getServerAuthSession();
+export default function NavBar() {
   return (
     <div
       className="flex h-[65px] w-full items-center justify-between gap-12 border-b-[1px]
@@ -29,7 +28,7 @@ export default async function NavBar() {
           Listings
         </Link>
         <Slash className="scale-75 stroke-black" />
-        <Link className="" href={session ? "/settings/account" : "/signin"}>
+        <Link className="" href="/settings/account">
           Settings
         </Link>
       </div>
