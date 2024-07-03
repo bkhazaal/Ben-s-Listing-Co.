@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "./ui/input";
 
 export default function SearchBar() {

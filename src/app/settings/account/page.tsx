@@ -7,18 +7,61 @@ export default async function Buying() {
 
   if (session?.user)
     return (
-      <div className="m-12">
-        <div className="text-bold text-center text-3xl leading-[50px]">
-          <h2>
+      <div className="m-12 flex justify-center">
+        <div className="text-m text-1xl w-1/2 rounded-lg border p-7 text-left leading-[35px]">
+          <p>
             {session && (
               <span>
-                Name: {userdata?.firstName}
+                <strong>Name:</strong> {userdata?.firstName}_
                 {userdata?.lastName}
               </span>
             )}
-          </h2>
-          <h2>{session && <span>Email: {session.user?.email}</span>}</h2>
-          <h2>{session && <span>Title: {userdata?.title}</span>}</h2>
+          </p>
+          <p>
+            {session && (
+              <span>
+                <strong>Email:</strong> {userdata?.email}
+              </span>
+            )}
+          </p>
+          <p>
+            {session && (
+              <span>
+                <strong>Title:</strong> {userdata?.title}
+              </span>
+            )}
+          </p>
+          <p>
+            {session && (
+              <span>
+                <strong>Company:</strong> {userdata?.companyName}
+              </span>
+            )}
+          </p>
+          <p>
+            {session && (
+              <span>
+                <strong>Office Phone: </strong>
+                {userdata?.officePhone}
+              </span>
+            )}
+          </p>
+          <p>
+            {session && (
+              <span>
+                <strong>Home Phone: </strong>
+                {userdata?.homePhone}
+              </span>
+            )}
+          </p>
+          <p>
+            {session && (
+              <span>
+                <strong>Mobile Phone: </strong>
+                {userdata?.mobilePhone}
+              </span>
+            )}
+          </p>
         </div>
       </div>
     );

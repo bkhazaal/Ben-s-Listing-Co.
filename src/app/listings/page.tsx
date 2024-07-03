@@ -24,7 +24,7 @@ export default async function Page() {
               </div>
             </div>
             <div className="flex h-10 items-center">
-              <Search className="mx-2 h-9 w-10"></Search>
+              <Search className="mx-1 h-7 w-10"></Search>
               <SearchBar></SearchBar>
             </div>
           </div>

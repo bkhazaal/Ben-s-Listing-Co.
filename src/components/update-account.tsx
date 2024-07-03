@@ -11,14 +11,14 @@ import { useToast } from "~/components/ui/use-toast";
 import { api } from "~/trpc/react";
 
 const schema = z.object({
-  firstName: z.string().min(1),
-  lastName: z.string().min(1),
-  email: z.string().min(1),
-  title: z.string().min(1),
-  companyName: z.string().min(1),
-  officePhone: z.string().min(1),
-  homePhone: z.string().min(1),
-  mobilePhone: z.string().min(1),
+  firstName: z.string(),
+  lastName: z.string(),
+  email: z.string(),
+  title: z.string(),
+  companyName: z.string(),
+  officePhone: z.string(),
+  homePhone: z.string(),
+  mobilePhone: z.string(),
 });
 
 type Schema = z.infer<typeof schema>;
@@ -46,8 +46,8 @@ export default function UpdateAccount({ id }: { id: string }) {
     });
   };
   return (
-    <main>
-      <div className="flex">
+    <main className="overflow-hidden">
+      <div className="fadeInSide flex">
         <Form {...form}>
           <form
             onSubmit={handleSubmit(onSubmit)}
