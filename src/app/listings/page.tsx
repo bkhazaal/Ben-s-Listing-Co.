@@ -3,7 +3,7 @@ import { Search } from "lucide-react";
 import Link from "next/link";
 import "src/styles/globals.css";
 import DeleteButton from "~/components/deletebutton";
-import { Input } from "~/components/ui/input";
+import SearchBar from "~/components/search";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
 
@@ -16,21 +16,19 @@ export default async function Page() {
       <div className="flex">
         <div className="flex w-full justify-between p-10">
           <h1 className="text-3xl font-semibold">All Listings</h1>
+          <div className="w-[150px] rounded-md border p-2 text-center">
+            <Link
+              href={
+                session ? "/listings/create-listing" : "/listings/signinplease"
+              }
+              className="text-[13px]"
+            >
+              Create New Listing
+            </Link>
+          </div>
           <div className="flex h-10 items-center">
-            <div className="w-[250px] rounded-md border p-2 text-center">
-              <Link
-                href={
-                  session
-                    ? "/listings/create-listing"
-                    : "/listings/signinplease"
-                }
-                className="text-[13px]"
-              >
-                Create New Listing
-              </Link>
-            </div>
-            <Search className="mx-2 h-20 w-10"></Search>
-            <Input type="text" className="focus:outline-slate-300" />
+            <Search className="mx-2 h-9 w-10"></Search>
+            <SearchBar></SearchBar>
           </div>
         </div>
       </div>
