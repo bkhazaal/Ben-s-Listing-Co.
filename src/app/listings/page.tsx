@@ -52,22 +52,22 @@ export default async function Page() {
                         Adjusted Cashflow:
                       </p>
                       <p>
-                        $
-                        {listing.askingPrice
-                          .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        {listing.askingPrice.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        })}
                       </p>
                       <p>
-                        $
-                        {listing.grossRevenue
-                          .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        {listing.grossRevenue.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        })}
                       </p>
                       <p>
-                        $
-                        {listing.adjCashflow
-                          .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        {listing.adjCashflow.toLocaleString("en-US", {
+                          style: "currency",
+                          currency: "USD",
+                        })}
                       </p>
                     </div>
                   </div>

@@ -68,6 +68,20 @@ export const listingRouter = createTRPCRouter({
       });
     }),
 
+  // searchUser: publicProcedure
+  //   .input(
+  //     z.object({
+  //       name: z.string(),
+  //     }),
+  //   )
+  //   .mutation(({ ctx, input }) => {
+  //     return ctx.db.listing.findUnique({
+  //       where: {
+  //         name: input.name,
+  //       },
+  //     });
+  //   }),
+
   getSecretMessage: publicProcedure.query(() => {
     return "you can now see this secret message!";
   }),

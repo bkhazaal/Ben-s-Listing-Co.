@@ -5,62 +5,33 @@ export default async function Buying() {
   const session = await getServerAuthSession();
   const userdata = await api.user.users();
 
-  if (session?.user)
+  if (session)
     return (
       <div className="m-12 flex justify-center">
         <div className="text-m text-1xl w-1/2 rounded-lg border p-7 text-left leading-[35px]">
           <p>
-            {session && (
-              <span>
-                <strong>Name:</strong> {userdata?.firstName}_
-                {userdata?.lastName}
-              </span>
-            )}
+            <strong>Name:</strong> {userdata?.firstName}_{userdata?.lastName}
           </p>
           <p>
-            {session && (
-              <span>
-                <strong>Email:</strong> {userdata?.email}
-              </span>
-            )}
+            <strong>Email:</strong> {userdata?.email}
           </p>
           <p>
-            {session && (
-              <span>
-                <strong>Title:</strong> {userdata?.title}
-              </span>
-            )}
+            <strong>Title:</strong> {userdata?.title}
           </p>
           <p>
-            {session && (
-              <span>
-                <strong>Company:</strong> {userdata?.companyName}
-              </span>
-            )}
+            <strong>Company:</strong> {userdata?.companyName}
           </p>
           <p>
-            {session && (
-              <span>
-                <strong>Office Phone: </strong>
-                {userdata?.officePhone}
-              </span>
-            )}
+            <strong>Office Phone: </strong>
+            {userdata?.officePhone}
           </p>
           <p>
-            {session && (
-              <span>
-                <strong>Home Phone: </strong>
-                {userdata?.homePhone}
-              </span>
-            )}
+            <strong>Home Phone: </strong>
+            {userdata?.homePhone}
           </p>
           <p>
-            {session && (
-              <span>
-                <strong>Mobile Phone: </strong>
-                {userdata?.mobilePhone}
-              </span>
-            )}
+            <strong>Mobile Phone: </strong>
+            {userdata?.mobilePhone}
           </p>
         </div>
       </div>
