@@ -23,7 +23,7 @@ const schema = z.object({
 
 type Schema = z.infer<typeof schema>;
 
-export default function UpdateAccount({ id }: { id: string }) {
+export default function UpdateAccount({ id }: { id: number }) {
   const router = useRouter();
   const { toast } = useToast();
   const form = useForm();
