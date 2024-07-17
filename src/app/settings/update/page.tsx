@@ -6,7 +6,7 @@ export default async function CreateListingPage() {
   if (session?.user)
     return (
       <main>
-        <UpdateAccount id=""></UpdateAccount>
+        <UpdateAccount id={user.id}></UpdateAccount>
       </main>
     );
   else

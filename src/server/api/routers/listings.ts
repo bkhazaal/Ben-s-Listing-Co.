@@ -81,8 +81,4 @@ export const listingRouter = createTRPCRouter({
         },
       });
     }),
-
-  getSecretMessage: publicProcedure.query(() => {
-    return "you can now see this secret message!";
-  }),
 });
