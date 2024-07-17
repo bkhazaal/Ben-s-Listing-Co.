@@ -25,22 +25,22 @@ export default async function Page(props: ListingPageInterface) {
       <main>
         {/* {JSON.stringify(props)} */}
         <div className="flex">
-          <div className="flex w-full justify-between p-10">
-            <div className="flex gap-5">
-              <h1 className="text-3xl font-semibold">All Listings</h1>
-              <div className="w-[150px] rounded-md border p-2 text-center">
-                <Link href="/create-listing" className="text-[13px]">
-                  Create New Listing
-                </Link>
-              </div>
+          <div className="flex w-full justify-between gap-5 p-10 max-[700px]:flex-col max-[700px]:items-center">
+            <h1 className="text-3xl font-semibold max-[700px]:text-5xl">
+              All Listings
+            </h1>
+            <div className="w-[150px] rounded-md border p-2 text-center">
+              <Link href="/create-listing" className=" text-[13px]">
+                Create New Listing
+              </Link>
             </div>
             <div className="flex h-10 items-center">
-              <Search className="mx-1 h-7 w-10"></Search>
+              <Search className="mx-1 h-7 w-10 max-[700px]:hidden"></Search>
               <SearchBar defaultValue={props.searchParams?.name} />
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1  lg:grid-cols-2">
+        <div className="grid grid-cols-2 max-[1000px]:grid-cols-1">
           {listings.map((listing) => {
             return (
               <div

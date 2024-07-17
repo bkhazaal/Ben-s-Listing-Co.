@@ -63,7 +63,7 @@ export default function UpdateAccount({
             className="m-12 w-full rounded-lg border p-6 text-3xl font-bold"
           >
             Update Account
-            <div className="mt-5 grid grid-cols-2 gap-x-5 gap-y-4">
+            <div className="mt-5 grid grid-cols-2 gap-x-5 gap-y-4 max-[700px]:grid-cols-1">
               <FormField
                 control={form.control}
                 name="firstName"

@@ -10,6 +10,7 @@ export default function SearchBar({ defaultValue }: SearchBarProps) {
       <Input
         defaultValue={defaultValue}
         type="text"
+        placeholder="Find your listing"
         name="name"
         className="focus:outline-slate-300"
       />
