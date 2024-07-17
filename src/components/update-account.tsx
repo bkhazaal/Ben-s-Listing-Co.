@@ -23,10 +23,17 @@ const schema = z.object({
 
 type Schema = z.infer<typeof schema>;
 
-export default function UpdateAccount({ id }: { id: number }) {
+// Update Account Component should accept defaultValues for the form fields
+export default function UpdateAccount({
+  defaultValues,
+}: {
+  defaultValues?: Schema;
+}) {
   const router = useRouter();
   const { toast } = useToast();
-  const form = useForm();
+  const form = useForm({
+    defaultValues,
+  });
 
   const { handleSubmit, register } = useForm<Schema>({
     resolver: zodResolver(schema),
@@ -38,9 +45,9 @@ export default function UpdateAccount({ id }: { id: number }) {
     },
   });
   const onSubmit = (data: Schema) => {
-    updateUser.mutate({
-      ...data,
-    });
+    console.log("test");
+
+    updateUser.mutate(data);
     toast({
       title: "User Info Updated",
     });
@@ -50,7 +57,9 @@ export default function UpdateAccount({ id }: { id: number }) {
       <div className="fadeInSide flex">
         <Form {...form}>
           <form
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmit, (err) => {
+              console.log("err", err);
+            })}
             className="m-12 w-full rounded-lg border p-6 text-3xl font-bold"
           >
             Update Account
@@ -65,7 +74,6 @@ export default function UpdateAccount({ id }: { id: number }) {
                     </FormLabel>
                     <Input
                       {...field}
-                      {...register("firstName")}
                       className="focus:outline-slate-300"
                     ></Input>
                   </FormItem>
@@ -81,7 +89,6 @@ export default function UpdateAccount({ id }: { id: number }) {
                     </FormLabel>
                     <Input
                       {...field}
-                      {...register("lastName")}
                       className="focus:outline-slate-300"
                     ></Input>
                   </FormItem>
@@ -97,7 +104,6 @@ export default function UpdateAccount({ id }: { id: number }) {
                     </FormLabel>
                     <Input
                       {...field}
-                      {...register("email")}
                       className="focus:outline-slate-300"
                     ></Input>
                   </FormItem>
@@ -111,7 +117,6 @@ export default function UpdateAccount({ id }: { id: number }) {
                     <FormLabel className="text-sm font-normal">Title</FormLabel>
                     <Input
                       {...field}
-                      {...register("title")}
                       className="focus:outline-slate-300"
                     ></Input>
                   </FormItem>
@@ -127,7 +132,6 @@ export default function UpdateAccount({ id }: { id: number }) {
                     </FormLabel>
                     <Input
                       {...field}
-                      {...register("companyName")}
                       className="focus:outline-slate-300"
                     ></Input>
                   </FormItem>
@@ -143,7 +147,6 @@ export default function UpdateAccount({ id }: { id: number }) {
                     </FormLabel>
                     <Input
                       {...field}
-                      {...register("officePhone")}
                       className="focus:outline-slate-300"
                     ></Input>
                   </FormItem>
@@ -159,7 +162,6 @@ export default function UpdateAccount({ id }: { id: number }) {
                     </FormLabel>
                     <Input
                       {...field}
-                      {...register("homePhone")}
                       className="focus:outline-slate-300"
                     ></Input>
                   </FormItem>
@@ -175,7 +177,6 @@ export default function UpdateAccount({ id }: { id: number }) {
                     </FormLabel>
                     <Input
                       {...field}
-                      {...register("mobilePhone")}
                       className="focus:outline-slate-300"
                     ></Input>
                   </FormItem>

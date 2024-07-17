@@ -33,6 +33,7 @@ export default function CreateListing() {
       router.refresh();
     },
   });
+
   const onSubmit = (data: Schema) => {
     createListing.mutate({
       name: data.name,

@@ -3,16 +3,27 @@ import { Search } from "lucide-react";
 import Link from "next/link";
 import "src/styles/globals.css";
 import DeleteButton from "~/components/deletebutton";
-import SearchBar from "~/components/search";
+import SearchBar from "~/components/SearchBar";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
 
-export default async function Page() {
-  const listings = await api.listing.list();
+interface ListingPageInterface {
+  searchParams?: {
+    name?: string;
+  };
+}
+
+export default async function Page(props: ListingPageInterface) {
+  const listings = await api.listing.list({
+    name: props.searchParams?.name,
+  });
+
+  // const test = await api.listing.
   const session = await getServerAuthSession();
   if (session?.user)
     return (
       <main>
+        {/* {JSON.stringify(props)} */}
         <div className="flex">
           <div className="flex w-full justify-between p-10">
             <div className="flex gap-5">
@@ -25,7 +36,7 @@ export default async function Page() {
             </div>
             <div className="flex h-10 items-center">
               <Search className="mx-1 h-7 w-10"></Search>
-              <SearchBar></SearchBar>
+              <SearchBar defaultValue={props.searchParams?.name} />
             </div>
           </div>
         </div>

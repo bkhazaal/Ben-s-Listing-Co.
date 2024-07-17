@@ -50,9 +50,23 @@ export const listingRouter = createTRPCRouter({
     return ctx.db.listing.findFirst({});
   }),
 
-  list: publicProcedure.query(({ ctx }) => {
-    return ctx.db.listing.findMany({});
-  }),
+  list: publicProcedure
+    // On the procudure level, we define the input schema (basically, the shape of the object that the frontend will send to the backend)
+    .input(z.object({ name: z.string().optional() }))
+    // We're using query here, because we're fetching data, not creating new data
+    .query(({ ctx, input }) => {
+      const searchString = input.name?.split(" ").join(" & ") ?? "";
+
+      return ctx.db.listing.findMany({
+        ...(input.name && {
+          where: {
+            name: {
+              search: searchString,
+            },
+          },
+        }),
+      });
+    }),
 
   delete: publicProcedure
     .input(
@@ -64,20 +78,6 @@ export const listingRouter = createTRPCRouter({
       return ctx.db.listing.delete({
         where: {
           id: input.id,
-        },
-      });
-    }),
-
-  searchUser: publicProcedure
-    .input(
-      z.object({
-        name: z.string(),
-      }),
-    )
-    .mutation(({ ctx, input }) => {
-      return ctx.db.listing.findMany({
-        where: {
-          name: input.name,
         },
       });
     }),

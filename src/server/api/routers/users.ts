@@ -9,6 +9,15 @@ import {
 const prisma = new PrismaClient();
 
 export const userRouter = createTRPCRouter({
+  self: protectedProcedure.query(({ ctx }) => {
+    const user = ctx.db.user.findUnique({
+      where: {
+        id: ctx.session.user.id,
+      },
+    });
+
+    return user;
+  }),
   create: publicProcedure
     .input(
       z.object({
