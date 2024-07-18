@@ -57,7 +57,8 @@ export default function UpdateAccount({
         <Form {...form}>
           <form
             onSubmit={handleSubmit(onSubmit, (err) => {
-              console.log("err", err);
+              console.log("values", err);
+              console.log(defaultValues);
             })}
             className="m-6 w-full rounded-lg border p-6 text-3xl font-bold max-[700px]:m-0 max-[700px]:w-max max-[700px]:text-center"
           >
