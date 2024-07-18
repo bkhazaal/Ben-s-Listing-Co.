@@ -34,9 +34,12 @@ export default function UpdateAccount({
     defaultValues,
   });
 
-  const { handleSubmit } = useForm<Schema>({
+  const { handleSubmit, watch } = useForm<Schema>({
     resolver: zodResolver(schema),
   });
+
+  const watchFirstName = watch("firstName");
+  console.log(watchFirstName);
 
   const updateUser = api.user.update.useMutation({
     onSuccess: () => {
@@ -73,7 +76,10 @@ export default function UpdateAccount({
                       First Name *
                     </FormLabel>
                     <Input
-                      {...field}
+                      value={field.value}
+                      onBlur={field.onBlur}
+                      ref={field.ref}
+                      onChange={(event) => field.onChange(event.target.value)}
                       className="focus:outline-slate-300"
                     ></Input>
                   </FormItem>
