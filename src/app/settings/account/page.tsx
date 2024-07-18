@@ -8,7 +8,7 @@ export default async function Buying() {
   if (session)
     return (
       <div className="m-12 flex justify-center">
-        <div className="text-m text-1xl w-2/3 rounded-lg border p-7 text-left leading-[35px]">
+        <div className="text-m text-1xl w-2/3 rounded-lg border p-7 text-left leading-[35px] max-[700px]:w-full">
           <p>
             <strong>Name:</strong> {userdata?.firstName}_{userdata?.lastName}
           </p>
@@ -21,17 +21,30 @@ export default async function Buying() {
           <p>
             <strong>Company:</strong> {userdata?.companyName}
           </p>
-          <p>
-            <strong>Office Phone: </strong>
-            {userdata?.officePhone}
-          </p>
+
+          {userdata?.officePhone && (
+            <p>
+              <strong>Office Phone: </strong>
+              {userdata.officePhone.replace(
+                /(\d{3})(\d{3})(\d{4})/,
+                "($1) $2-$3",
+              )}
+            </p>
+          )}
+
           <p>
             <strong>Home Phone: </strong>
-            {userdata?.homePhone}
+            {userdata?.homePhone?.replace(
+              /(\d{3})(\d{3})(\d{4})/,
+              "($1) $2-$3",
+            )}
           </p>
           <p>
-            <strong>Mobile Phone: </strong>
-            {userdata?.mobilePhone}
+            <strong>Mobile: </strong>
+            {userdata?.mobilePhone?.replace(
+              /(\d{3})(\d{3})(\d{4})/,
+              "($1) $2-$3",
+            )}
           </p>
         </div>
       </div>
