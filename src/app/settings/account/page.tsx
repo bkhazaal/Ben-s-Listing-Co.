@@ -7,7 +7,7 @@ export default async function Buying() {
 
   if (session)
     return (
-      <div className="m-12 flex justify-center">
+      <div className="m-12 flex justify-center max-[700px]:m-2">
         <div className="text-m text-1xl w-2/3 rounded-lg border p-7 text-left leading-[35px] max-[700px]:w-full">
           <p>
             <strong>Name:</strong> {userdata?.firstName}_{userdata?.lastName}

@@ -23,7 +23,6 @@ const schema = z.object({
 
 type Schema = z.infer<typeof schema>;
 
-// Update Account Component should accept defaultValues for the form fields
 export default function UpdateAccount({
   defaultValues,
 }: {
@@ -35,7 +34,7 @@ export default function UpdateAccount({
     defaultValues,
   });
 
-  const { handleSubmit, register } = useForm<Schema>({
+  const { handleSubmit } = useForm<Schema>({
     resolver: zodResolver(schema),
   });
 
@@ -54,13 +53,13 @@ export default function UpdateAccount({
   };
   return (
     <main className="overflow-hidden">
-      <div className="fadeInSide flex justify-center">
+      <div className="FadeInUp flex justify-center">
         <Form {...form}>
           <form
             onSubmit={handleSubmit(onSubmit, (err) => {
               console.log("err", err);
             })}
-            className="m-12 rounded-lg border p-6 text-3xl font-bold max-[700px]:m-0 max-[700px]:text-center"
+            className="m-6 w-full rounded-lg border p-6 text-3xl font-bold max-[700px]:m-0 max-[700px]:w-max max-[700px]:text-center"
           >
             Update Account
             <div className="mt-5 grid grid-cols-2 gap-x-5 gap-y-4 max-[700px]:grid-cols-1">
