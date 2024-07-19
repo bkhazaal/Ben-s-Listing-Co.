@@ -2,10 +2,17 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "~/components/ui/button";
-import { Form, FormField, FormItem, FormLabel } from "~/components/ui/form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+} from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
 import { useToast } from "~/components/ui/use-toast";
 import { api } from "~/trpc/react";
@@ -30,23 +37,25 @@ export default function UpdateAccount({
 }) {
   const router = useRouter();
   const { toast } = useToast();
+
   const form = useForm({
+    resolver: zodResolver(schema),
     defaultValues,
   });
 
-  const { handleSubmit, watch } = useForm<Schema>({
-    resolver: zodResolver(schema),
-  });
+  const watchFirstName = form.watch("firstName");
 
-  const watchFirstName = watch("firstName");
-  console.log(watchFirstName);
+  useEffect(() => {
+    console.log(watchFirstName);
+  }, [watchFirstName]);
 
   const updateUser = api.user.update.useMutation({
     onSuccess: () => {
       router.refresh();
     },
   });
-  const onSubmit = (data: Schema) => {
+
+  const onSubmit = (data: any) => {
     console.log("test");
 
     updateUser.mutate(data);
@@ -54,16 +63,17 @@ export default function UpdateAccount({
       title: "User Info Updated",
     });
   };
+
   return (
     <main className="overflow-hidden">
       <div className="FadeInUp flex justify-center">
         <Form {...form}>
           <form
-            onSubmit={handleSubmit(onSubmit, (err) => {
+            onSubmit={form.handleSubmit(onSubmit, (err) => {
               console.log("values", err);
               console.log(defaultValues);
             })}
-            className="m-6 w-full rounded-lg border p-6 text-3xl font-bold max-[700px]:m-0 max-[700px]:w-max max-[700px]:text-center"
+            className="m-6 w-full rounded-lg border p-6 text-3xl font-bold max-[700px]:m-0 max-[700px]:w-full max-[700px]:text-center"
           >
             Update Account
             <div className="mt-5 grid grid-cols-2 gap-x-5 gap-y-4 max-[700px]:grid-cols-1">
@@ -75,13 +85,12 @@ export default function UpdateAccount({
                     <FormLabel className="text-sm font-normal">
                       First Name *
                     </FormLabel>
-                    <Input
-                      value={field.value}
-                      onBlur={field.onBlur}
-                      ref={field.ref}
-                      onChange={(event) => field.onChange(event.target.value)}
-                      className="focus:outline-slate-300"
-                    ></Input>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        className="focus:outline-slate-300"
+                      ></Input>
+                    </FormControl>
                   </FormItem>
                 )}
               />
@@ -93,10 +102,12 @@ export default function UpdateAccount({
                     <FormLabel className="text-sm font-normal">
                       Last Name *
                     </FormLabel>
-                    <Input
-                      {...field}
-                      className="focus:outline-slate-300"
-                    ></Input>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        className="focus:outline-slate-300"
+                      ></Input>
+                    </FormControl>
                   </FormItem>
                 )}
               />
@@ -108,10 +119,12 @@ export default function UpdateAccount({
                     <FormLabel className="text-sm font-normal">
                       Email *
                     </FormLabel>
-                    <Input
-                      {...field}
-                      className="focus:outline-slate-300"
-                    ></Input>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        className="focus:outline-slate-300"
+                      ></Input>
+                    </FormControl>
                   </FormItem>
                 )}
               />
@@ -121,10 +134,12 @@ export default function UpdateAccount({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-normal">Title</FormLabel>
-                    <Input
-                      {...field}
-                      className="focus:outline-slate-300"
-                    ></Input>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        className="focus:outline-slate-300"
+                      ></Input>
+                    </FormControl>
                   </FormItem>
                 )}
               />
@@ -136,10 +151,12 @@ export default function UpdateAccount({
                     <FormLabel className="text-sm font-normal">
                       Company Name
                     </FormLabel>
-                    <Input
-                      {...field}
-                      className="focus:outline-slate-300"
-                    ></Input>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        className="focus:outline-slate-300"
+                      ></Input>
+                    </FormControl>
                   </FormItem>
                 )}
               />
@@ -151,10 +168,12 @@ export default function UpdateAccount({
                     <FormLabel className="text-sm font-normal">
                       Office Phone
                     </FormLabel>
-                    <Input
-                      {...field}
-                      className="focus:outline-slate-300"
-                    ></Input>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        className="focus:outline-slate-300"
+                      ></Input>
+                    </FormControl>
                   </FormItem>
                 )}
               />
@@ -166,10 +185,12 @@ export default function UpdateAccount({
                     <FormLabel className="text-sm font-normal">
                       Home Phone
                     </FormLabel>
-                    <Input
-                      {...field}
-                      className="focus:outline-slate-300"
-                    ></Input>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        className="focus:outline-slate-300"
+                      ></Input>
+                    </FormControl>
                   </FormItem>
                 )}
               />
@@ -181,10 +202,12 @@ export default function UpdateAccount({
                     <FormLabel className="text-sm font-normal">
                       MobilePhone
                     </FormLabel>
-                    <Input
-                      {...field}
-                      className="focus:outline-slate-300"
-                    ></Input>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        className="focus:outline-slate-300"
+                      ></Input>
+                    </FormControl>
                   </FormItem>
                 )}
               />
