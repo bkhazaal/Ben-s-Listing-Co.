@@ -200,7 +200,7 @@ export default function UpdateAccount({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-sm font-normal">
-                      MobilePhone
+                      Mobile Phone
                     </FormLabel>
                     <FormControl>
                       <Input

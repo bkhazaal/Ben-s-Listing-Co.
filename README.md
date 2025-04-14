@@ -11,16 +11,64 @@ Ben's Listing Co. is a simple and modern business listings application built wit
 
 ## Tech Stack
 
-- **Frontend**: Next.js (App Router), React, TypeScript, Tailwind CSS, ShadCN UI
+- **Frontend**: Next.js, React, TypeScript, Tailwind CSS, ShadCN UI
 - **Backend**: Prisma ORM, tRPC
-- **Database**: PostgreSQL (or any compatible relational database)
+- **Database**: PostgreSQL
 
-## Getting Started
+## How to run
 
-1. Clone the repository:
+1. **Clone the repository:**
+   ![git clone](/images/clone.png)
+   Then, run cd bens-listing-co in the terminal
 
-   ```bash
-   git clone https://github.com/yourusername/bens-listing-co.git
+---
 
-   cd bens-listing-co
-   ```
+2. Run cd bens-listing-co in the terminal, then run "pnpm i" in the terminal:
+
+   ![pnpmi](/images/pnpmi.png)
+
+---
+
+3. Create a file named .env and add what you see in the screenshot:
+
+   ![env](/images/env.png) ![env2](/images/envfile.png)
+
+---
+
+4. Go the (https://discord.com/developers/applications)
+
+   Create a new application, and paste the client id, and generated secret into the env file
+
+   ***
+
+5. run "openssl rand -base64 32" in the terminal to generate a next
+
+   ![secret](/images/secret.png)
+
+---
+
+6. Make a new connection in dbngin with port 5432.
+
+   ![dbngin](/images/dbngin.png)
+
+   Press start
+
+---
+
+7. Run pnpm db:generate to start the database
+
+   ![dbgenerate](/images/dbgenerate.png)
+
+---
+
+8. Run pnpm dev in the terminal to start the application
+
+![pnpmdev](/images/pnpmdev.png)
+
+9. Sign in with your discord account
+
+![singin](/images/signin.png)
+
+![discord](/images/discord.png)
+
+10. Enjoy!
