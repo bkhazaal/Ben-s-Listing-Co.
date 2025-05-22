@@ -15,60 +15,40 @@ Ben's Listing Co. is a simple and modern business listings application built wit
 - **Backend**: Prisma ORM, tRPC
 - **Database**: PostgreSQL
 
-## How to run
+## How to run on VS Code
 
-1. **Clone the repository:**
-   ![git clone](/images/clone.png)
-   Then, run cd bens-listing-co in the terminal
+1. Open your terminal and clone the repo.
 
 ---
 
-2. Run cd bens-listing-co in the terminal, then run "pnpm i" in the terminal:
-
-   ![pnpmi](/images/pnpmi.png)
+2. Run cd bens-listing-co, then run "pnpm i" in the terminal.
 
 ---
 
-3. Create a file named .env and add what you see in the screenshot:
+3. Go to https://discord.com/developers/applications, create a new application, and paste the client id and generated secret into the env file.
 
-   ![env](/images/env.png) ![env2](/images/envfile.png)
-
----
-
-4. Go the (https://discord.com/developers/applications)
-
-   Create a new application, and paste the client id, and generated secret into the env file
-
-   ***
-
-5. run "openssl rand -base64 32" in the terminal to generate a next
-
-   ![secret](/images/secret.png)
+4. Create a file named .env and add your DatabaseURL, discord client ID, nextauth secret (run "openssl rand -base64 32" in the terminal to generate this), nextauth URL, and finally your discord client secret.
 
 ---
 
-6. Make a new connection in dbngin with port 5432.
-
-   ![dbngin](/images/dbngin.png)
-
-   Press start
+5. Create a new application, paste the client id and generated secret into the env file.
 
 ---
 
-7. Run pnpm db:generate to start the database
-
-   ![dbgenerate](/images/dbgenerate.png)
+6. Make a new connection in dbngin with port 5432, and then Press start.
 
 ---
 
-8. Run pnpm dev in the terminal to start the application
+7. Run pnpm db:generate in the terminal to start the database.
 
-![pnpmdev](/images/pnpmdev.png)
+---
 
-9. Sign in with your discord account
+8. Run pnpm dev in the terminal to start the application.
 
-![singin](/images/signin.png)
+---
 
-![discord](/images/discord.png)
+9. Sign in with your Discord account.
+
+---
 
 10. Enjoy!
