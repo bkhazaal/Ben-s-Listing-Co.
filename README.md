@@ -27,6 +27,8 @@ Ben's Listing Co. is a simple and modern business listings application built wit
 
 3. Go to https://discord.com/developers/applications, create a new application, and paste the client id and generated secret into the env file.
 
+---
+
 4. Create a file named .env and add your DatabaseURL, discord client ID, nextauth secret (run "openssl rand -base64 32" in the terminal to generate this), nextauth URL, and finally your discord client secret.
 
 ---
